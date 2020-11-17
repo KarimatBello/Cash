@@ -1,0 +1,51 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GreedyChange
+{
+        public static void main (String[] args) throws java.lang.Exception
+        {
+            Scanner sc = new Scanner(System.in);
+            int count =0;
+            double amt = -1.0;
+            //Till the time a positive value is not fed, it will keep on asking for input
+            while(amt<0.0)
+            {
+            System.out.print("Change Owed: ");
+            amt = sc.nextDouble();
+            System.out.println("\n");
+            }
+            //Here the dollar is changed into cents with appropriate rounding off
+        int amount = (int)Math.round(amt * 100);
+        // All the 25 cents are counted and the remaining amount is in amount.
+        if(amount >= 25)
+        {
+            int temp = amount%25;
+            count = count+ ((amount-temp)/25);
+            amount = temp;
+        }
+        //Number of 10c coins is counted.
+        if(amount >=10)
+        {
+            int temp = amount%10;
+            count = count+ ((amount-temp)/10);
+            amount = temp;
+        }
+        //5 cent count.
+        if(amount >=5)
+        {
+            int temp = amount%5;
+            count = count+ ((amount-temp)/5);
+            amount = temp;
+        }
+        //remaining can only be fulfilled by pennies.
+        count = count+amount;
+        //count has the number of coins needed.
+        System.out.println(count);
+        
+            
+            
+            
+        }
+}
